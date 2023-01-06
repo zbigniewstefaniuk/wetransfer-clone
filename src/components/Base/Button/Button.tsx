@@ -2,8 +2,8 @@ import { SyntheticEvent } from "react";
 
 interface Props {
   title: string;
-  onClick: (e: SyntheticEvent<Element, Event>) => Promise<void>;
-  type: React.ButtonHTMLAttributes<HTMLButtonElement>["type"];
+  onClick?: (e: SyntheticEvent<Element, Event>) => Promise<void>;
+  type?: React.ButtonHTMLAttributes<HTMLButtonElement>["type"];
   isLoading?: boolean;
 }
 

@@ -5,6 +5,7 @@ import Login from "@/pages/Auth/Login";
 import Register from "@/pages/Auth/Register";
 import Root from "@/pages/Root/Root";
 import ConfirmMail from "@/pages/Auth/ConfirmMail";
+import ThanksForRegistration from "@/pages/Auth/ThanksForRegistration";
 
 const router = createBrowserRouter([
   {
@@ -23,6 +24,10 @@ const router = createBrowserRouter([
       {
         path: "/confirm-mail",
         element: <ConfirmMail />,
+      },
+      {
+        path: "/thanks-for-registration",
+        element: <ThanksForRegistration />,
       },
     ],
   },
