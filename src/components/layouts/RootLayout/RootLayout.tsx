@@ -10,7 +10,7 @@ const RootLayout: FC<{ children: React.ReactNode }> = ({ children }) => {
   return (
     <div>
       <Navbar isLoggedIn={!!authState?.id} />
-      {children}
+      <main className="px-2 sm:px-4 pt-24">{children}</main>
       <Footer />
     </div>
   );

@@ -66,7 +66,11 @@ const Register: FC = () => {
             </span>
           </div>
           <div className="flex flex-col">
-            <Button type="submit" title="Submit" isLoading={isLoading} />
+            <Button
+              type="submit"
+              title="Create Account"
+              isLoading={isLoading}
+            />
           </div>
         </div>
       </form>
