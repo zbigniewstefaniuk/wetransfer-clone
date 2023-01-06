@@ -13,15 +13,9 @@ const Login: FC = () => {
     console.error(error);
   }
 
-  async function logout() {
-    const { error } = await supabase.auth.signOut();
-    console.error(error);
-  }
-
   return (
     <div>
       Login <Button title="Login" onClick={login} />
-      Logout <Button title="Logout" onClick={logout} />
     </div>
   );
 };
