@@ -12,13 +12,15 @@ const useAuthStateChange = () => {
   });
 
   useEffect(() => {
-    supabase.auth.onAuthStateChange((event, session) => {
-      console.log(event, session);
-      setAuthState({
-        event,
-        session,
-      });
-    });
+    supabase.auth.onAuthStateChange(
+      (event: AuthChangeEvent, session: Session | null) => {
+        console.log(event, session);
+        setAuthState({
+          event,
+          session,
+        });
+      }
+    );
   }, []);
 
   return authState;
