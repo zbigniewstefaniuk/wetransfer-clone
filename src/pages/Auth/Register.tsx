@@ -1,21 +1,29 @@
 import Button from "@/components/Base/Button";
 import supabase from "@/lib/Supabse/supabaseCLient";
 import { FC, SyntheticEvent, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const Register: FC = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
+  const navigate = useNavigate();
 
   async function onSubmit(e: SyntheticEvent) {
     e.preventDefault();
-
+    setIsLoading(true);
     const { data, error } = await supabase.auth.signUp({
       email,
       password,
     });
 
+    if (data.user?.id) {
+      navigate("/confirm-mail");
+    }
+
     console.log(data);
     console.error(error);
+    setIsLoading(false);
   }
 
   return (
@@ -54,7 +62,7 @@ const Register: FC = () => {
               type="submit"
               onClick={onSubmit}
               title="Submit"
-              isLoading={true}
+              isLoading={isLoading}
             />
           </div>
         </div>
