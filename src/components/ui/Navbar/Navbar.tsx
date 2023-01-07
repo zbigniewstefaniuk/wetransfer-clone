@@ -18,9 +18,18 @@ const Navbar: FC<Props> = ({ isLoggedIn = false }) => {
   return (
     <nav className="bg-white px-2 sm:px-4 py-2.5 dark:bg-gray-900 fixed w-full z-20 top-0 left-0 border-b border-gray-200 dark:border-gray-600">
       <div className="flex flex-wrap justify-end items-center mx-auto max-w-screen-xl px-4 md:px-6 py-2.5 gap-4">
-        <Button title="Transfers" onClick={logout} />
         {isLoggedIn ? (
-          <Button title="Logout" onClick={logout} />
+          <>
+            <Button title="Transfers" onClick={() => navigate("/transfers")} />
+            <Button title="Account" onClick={() => navigate("/account")} />
+            <Button
+              title="Logout"
+              onClick={async () => {
+                await logout();
+                navigate("/login");
+              }}
+            />
+          </>
         ) : (
           <>
             <Button title="Sign Up" onClick={() => navigate("/register")} />

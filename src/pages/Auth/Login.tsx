@@ -1,8 +1,11 @@
+import { FC } from "react";
+import { useNavigate } from "react-router-dom";
 import Button from "@/components/Base/Button";
 import supabase from "@/lib/Supabase";
-import { FC } from "react";
 
 const Login: FC = () => {
+  const navigate = useNavigate();
+
   async function login() {
     const { data, error } = await supabase.auth.signInWithPassword({
       email: "zbyszek791@hotmail.com",
@@ -11,6 +14,8 @@ const Login: FC = () => {
 
     console.log(data);
     console.error(error);
+
+    navigate("/");
   }
 
   return (
