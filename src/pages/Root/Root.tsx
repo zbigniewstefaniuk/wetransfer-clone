@@ -1,5 +1,5 @@
 import RootLayout from "@/components/layouts/RootLayout";
-import getUser from "@/lib/Supabase/api/getUser";
+import { getUser } from "@/lib/Supabase/api";
 import { User } from "@supabase/supabase-js";
 import { Outlet, useLoaderData } from "react-router-dom";
 
