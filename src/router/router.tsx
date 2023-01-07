@@ -3,17 +3,18 @@ import ErrorPage from "@/pages/Root/Error";
 import Home from "@/pages/Home/Home";
 import Login from "@/pages/Auth/Login";
 import Register from "@/pages/Auth/Register";
-import Root from "@/pages/Root/Root";
+import Root, { loader as rootLoader } from "@/pages/Root/Root";
 import ConfirmMail from "@/pages/Auth/ConfirmMail";
 import ThanksForRegistration from "@/pages/Auth/ThanksForRegistration";
 import AuthGuard, { loader as authGuardLoader } from "@/pages/Auth/AuthGuard";
-import Account from "@/pages/Account";
+import Account, { loader as accountLoader } from "@/pages/Account";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <Root />,
     errorElement: <ErrorPage />,
+    loader: rootLoader,
     children: [
       {
         path: "/login",
@@ -37,6 +38,7 @@ const router = createBrowserRouter([
         children: [
           {
             path: "/account",
+            loader: accountLoader,
             element: <Account />,
           },
           {

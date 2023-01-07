@@ -10,7 +10,6 @@ export async function loader() {
 const AuthGuard = () => {
   const user = useLoaderData() as User | null;
 
-  console.log("authState", user);
   return user?.id ? <Outlet /> : <Navigate to="/login" />;
 };
 
