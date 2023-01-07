@@ -6,6 +6,8 @@ import Register from "@/pages/Auth/Register";
 import Root from "@/pages/Root/Root";
 import ConfirmMail from "@/pages/Auth/ConfirmMail";
 import ThanksForRegistration from "@/pages/Auth/ThanksForRegistration";
+import AuthGuard, { loader as authGuardLoader } from "@/pages/Auth/AuthGuard";
+import Account from "@/pages/Account";
 
 const router = createBrowserRouter([
   {
@@ -28,6 +30,20 @@ const router = createBrowserRouter([
       {
         path: "/thanks-for-registration",
         element: <ThanksForRegistration />,
+      },
+      {
+        element: <AuthGuard />,
+        loader: authGuardLoader,
+        children: [
+          {
+            path: "/account",
+            element: <Account />,
+          },
+          {
+            path: "/transfers",
+            element: <Home />,
+          },
+        ],
       },
     ],
   },
