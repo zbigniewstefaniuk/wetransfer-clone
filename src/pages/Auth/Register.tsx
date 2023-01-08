@@ -3,6 +3,8 @@ import { useNavigate } from "react-router-dom";
 import { useForm, SubmitHandler } from "react-hook-form";
 import Button from "@/components/Base/Button";
 import supabase from "@/lib/Supabase";
+import Input from "@/components/Form/Input";
+import Error from "@/components/Form/Error";
 
 type Inputs = {
   email: string;
@@ -34,36 +36,28 @@ const Register: FC = () => {
     setIsLoading(false);
   };
 
+  console.log("errors", errors);
   return (
     <section className="flex flex-col items-center ">
       <div className="font-bold px-3">Register</div>
       <form onSubmit={handleSubmit(onSubmit)}>
-        <div className="flex flex-col items-center gap-4">
+        <div className="flex flex-col items-center gap-4 bg-slate-200 p-5 rounded-lg dark:bg-gray-900">
           <div className="flex flex-col">
-            <label htmlFor="email">Email</label>
-            <input
-              type="email"
-              id="email"
-              placeholder="email"
-              className="border-2 border-sky-500 rounded-lg px-2 py-1"
+            <Input
+              placeholder="Email"
+              label="Email"
               {...register("email", { required: true })}
             />
-            <span className="text-red-600">
-              {errors.email && "This field is required"}
-            </span>
+            {errors.email && <Error />}
           </div>
           <div className="flex flex-col">
-            <label htmlFor="password">Password</label>
-            <input
+            <Input
+              label="Password"
               type="password"
-              id="password"
-              className="border-2 border-sky-500 rounded-lg px-2 py-1"
               placeholder="password"
               {...register("password", { required: true })}
             />
-            <span className="text-red-600">
-              {errors.password && "This field is required"}
-            </span>
+            {errors.password && <Error />}
           </div>
           <div className="flex flex-col">
             <Button

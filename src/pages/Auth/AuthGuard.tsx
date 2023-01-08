@@ -1,6 +1,6 @@
 import { Navigate, Outlet, useLoaderData } from "react-router-dom";
 import { User } from "@supabase/supabase-js";
-import getUser from "@/lib/Supabase/api/getUser";
+import { getUser } from "@/lib/Supabase/api";
 
 export async function loader() {
   const user = await getUser();
